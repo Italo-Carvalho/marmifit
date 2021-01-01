@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ptbr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marmifit</title>
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanalei+Fill&family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Hanalei+Fill&family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+  <section class="container-top">
+    <div class="menu">
+      <h1 id="title-menu">MARMI<span>FIT</span></h1>
+      <ul class="menu-options">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Cardápio</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="#">Sobre</a></li>
+        {% if user.is_authenticated %}
+        <li class="top-menu" style="
+    margin-top: 19px;">👤 {{ user.username }} <small>[<a class="exit" href="{% url 'logout' %}?next=/">x</a>]</small></li>
+        {% else %}
+        <a href="{% url 'login' %}" class="top-menu">Login</a>
+        {% endif %}
+      </ul>
+
+    </div>
+
+  </section>
+  <!--container-top-->
+  {% block content %}
+  {% endblock %}
+</body>
+
+</html>

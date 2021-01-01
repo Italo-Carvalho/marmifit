@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+<div class="box-login">
+  <img src="{% static 'images/logo-cadastro.jpg' %}">
+
+  <p id="titulo">Crie sua conta</p>
+  <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Sign up">
+  </form>
+
+  <span>Já tem uma conta? <a href="{% url 'login'%}">Crie seu cadastro aqui</a></span>
+</div>
+{% endblock %}
